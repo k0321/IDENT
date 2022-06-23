@@ -1,0 +1,5 @@
+/home/igor/Code/QT/build-Ident-CLang12-Release/CMakeFiles/rebuild_cache.dir
+/home/igor/Code/QT/build-Ident-CLang12-Release/CMakeFiles/edit_cache.dir
+/home/igor/Code/QT/build-Ident-CLang12-Release/src/CMakeFiles/rebuild_cache.dir
+/home/igor/Code/QT/build-Ident-CLang12-Release/src/CMakeFiles/edit_cache.dir
+/home/igor/Code/QT/build-Ident-CLang12-Release/src/CMakeFiles/ident.dir
