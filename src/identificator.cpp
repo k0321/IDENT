@@ -9,13 +9,16 @@ using namespace std;
 
 namespace IDENTTIFICATOR
 {
+#include "identificator.h"
+
+using namespace std;
 
 Identificator::Identificator ()
 {
     mCells.emplace_back(memoryCell("A1", 1));
 }
 
-bool Identificator::checkValid(string& ident)
+bool Identificator::checkValid(const string& ident)
 {
     if(!ident.size())
         return false;
@@ -46,6 +49,13 @@ bool Identificator::incrPair(string& pair)
         if(ch == '-')
             count++;
     }
+
+    if((pair[pair.size() - 1] == DigitValue[DigitValue.size() - 1]) &&
+            (pair[pair.size() - 2] == CharValue[CharValue.size() - 1]) &&
+            (pair[pair.size() - 4] == DigitValue[DigitValue.size() - 1]) &&
+            (pair[pair.size() - 5] == CharValue[CharValue.size() - 1]))
+        return false;
+
     if(pair[pair.size() - 1] != DigitValue[DigitValue.size() - 1])
     {
         n = DigitValue.find(pair[pair.size() - 1]);
@@ -81,67 +91,49 @@ bool Identificator::incrPair(string& pair)
                         if(n + 1 < CharValue.size())
                             pair[pair.size() - 5] = CharValue[n + 1];
                     }
-                    else
-                    {
-                        pair[pair.size() - 5] = CharValue[0];
-                        return true;
-                    }
                 }
             }
             else
-                pair += string("-A1");
+            {
+                pair.resize(pair.size() + 3);
+                pair[pair.size() - 3] = '-';
+                pair[pair.size() - 2] = CharValue[0];
+                pair[pair.size() - 1] = DigitValue[0];
+            }
         }
     }
-return false;
+return true;
 }
 
 string Identificator::calcIdent(const string& ident)
 {
-    string _ident(ident);
-    if(!checkValid(_ident))
+    if(!checkValid(ident))
         return "Error";
-    string temp, resultStr = ident;
-    if(ident.size() < 6)
+    string temp, resultStr(ident);
+    bool status;
+    int count = 0;
+    for(auto ch: resultStr)
     {
-        if(incrPair(resultStr))
-            resultStr += string(" A1");
+        if(ch == ' ')
+            count++;
+    }
+    size_t n = resultStr.find_last_of(" ");
+    temp = resultStr.substr(n + 1);
+    resultStr.resize(n + 1);
+    status = incrPair(temp);
+    if(status)
+        resultStr.append(temp);
+    else if(count < 9)
+    {
+        resultStr.append(temp);
+        resultStr.resize(resultStr.size() + 3);
+        resultStr[resultStr.size() - 3] = ' ';
+        resultStr[resultStr.size() - 2] = CharValue[0];
+        resultStr[resultStr.size() - 1] = DigitValue[0];
     }
     else
-    {
-        int count = 0, ncount;
-        bool status;
-        for(auto ch: resultStr)
-            if(ch == ' ')
-                count++;
-        ncount = count;
-        size_t n = resultStr.find_last_of(" ");
-        temp = resultStr.substr(n + 1);
-        resultStr.resize(n + 1);
-        do {
-            status = incrPair(temp);
-            if(!status)
-            {
-                resultStr += temp;
-                break;
-            }
-            else
-            {
-                memmove(&resultStr[n + 1], &temp[0], temp.size());
-                if(--ncount)
-                    n -= 5;
-                else
-                    n = 0;
-                temp.clear();
-                temp = resultStr.substr(n + 1);
-                temp.resize(5);
-            }
-        } while(ncount);
-        if(status && count < 9)
-            resultStr += " A1";
-        else if(status && count == 9)
-            return "Full";
-    }
-return resultStr;
+        return "Full";
+    return resultStr;
 }
 
 string Identificator::incrID()

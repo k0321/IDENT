@@ -34,7 +34,7 @@ private:
         memoryCell& operator = (const memoryCell& other) = default;
     };
     vector<memoryCell> mCells;
-    bool checkValid(string& ident);
+    bool checkValid(const string& ident);
     bool incrPair(string& pair);
 public:
     Identificator();

@@ -26,10 +26,11 @@ using namespace std;
 
 int main()
 {
-    string test("C9");
+    string test("Z9-Z9");
     IDENTTIFICATOR::Identificator id;
-    for(int i = 0; i < 30061; ++i)
+    for(int i = 0; i < 294120; ++i)
         cout << i << " : " << id.incrID() << ", num = " << id.getNum() << endl;
+    cout << id.incrID() << endl;
     cout << id.calcIdent(test) << endl;
     cout << id.getID() << endl;
 
