@@ -1,1 +1,0 @@
-/usr/bin/clang++-12  -O2 -DNDEBUG   CMakeFiles/ident.dir/main.cpp.o CMakeFiles/ident.dir/identificator.cpp.o  -o ident  -lpthread 

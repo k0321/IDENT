@@ -13,3 +13,16 @@ Technical requirements for the solution:
 3. The code must be cross-platform (successfully compiled by msvc/gcc/clang compilers).
 4. To solve the problem, only the standard C++ library (standard up to C++17 inclusive) can be used.
 
+=============================================================================
+Two implementation options: arithmetic progression and geometric progression.
+arithmetic:
+A1
+A1-A1
+Z9-Z9 A1
+Z9-Z9 Z9-Z9 A1
+
+geometric:
+A1
+A1-A1 A1
+A1-A1 Z9-Z9
+A1-A2 A1-A1
