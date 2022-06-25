@@ -14,14 +14,17 @@ Technical requirements for the solution:
 4. To solve the problem, only the standard C++ library (standard up to C++17 inclusive) can be used.
 
 =============================================================================
+
 Two implementation options: arithmetic progression and geometric progression.
 arithmetic:
+
 A1
 A1-A1
 Z9-Z9 A1
 Z9-Z9 Z9-Z9 A1
 
 geometric:
+
 A1
 A1-A1 A1
 A1-A1 Z9-Z9
