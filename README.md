@@ -18,14 +18,20 @@ Technical requirements for the solution:
 Two implementation options: arithmetic progression and geometric progression.
 arithmetic:
 
-A1
-A1-A1
-Z9-Z9 A1
+A1,
+
+A1-A1,
+
+Z9-Z9 A1,
+
 Z9-Z9 Z9-Z9 A1
 
 geometric:
 
-A1
-A1-A1 A1
-A1-A1 Z9-Z9
+A1,
+
+A1-A1 A1,
+
+A1-A1 Z9-Z9,
+
 A1-A2 A1-A1
