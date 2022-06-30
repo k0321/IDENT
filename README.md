@@ -1,4 +1,4 @@
-# IDENT
+# IDENT from Uniteller
 There is a sequence of identifiers built according to the following rules:
 1. The first sequence identifier is 'A1', the second is 'A2', the third is 'A3', and so on. 'A9' is followed by 'B1'. The next after 'Z9' looks like 'A1-A1', then 'A1-A2' and so on. 'A1-Z9' is followed by 'A2-A1'.
 2. The maximum length of the identifier is ten groups of two characters.
